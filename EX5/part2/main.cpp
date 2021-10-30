@@ -1,8 +1,14 @@
 #ifndef F_CPU
+
 #define F_CPU 4000000UL
+
+
 #include <stdio.h>
+
 #include <avr/io.h>    
+
 #include <util/delay.h>  
+
 
 
 #define a1 (1<<PD4)
@@ -13,17 +19,12 @@
 
 #define a4  (1<<PD7)
 
-
-
 #define SW (1<<PD3)
 
- 
 
 int main(void){
 
-
 	DDRD |= a1 | a2 | a3| a4;
-
 
 	DDRD &= ~SW;
 
@@ -32,6 +33,8 @@ int main(void){
 
 
 	while(1){
+
+
 
 		if(!(PIND & SW)){
 
@@ -47,7 +50,6 @@ int main(void){
 		_delay_ms(100);
 
 
-
 		PORTD |= a1;
 
 		PORTD &= ~a2;
@@ -58,8 +60,6 @@ int main(void){
 
 		_delay_ms(100);
 
-
-
 		PORTD &= ~a1;
 
 		PORTD |= a2;
@@ -69,8 +69,6 @@ int main(void){
 		PORTD &= ~a4;
 
 		_delay_ms(100);
-
-
 
 		PORTD &= ~a1;
 
@@ -83,6 +81,48 @@ int main(void){
 		_delay_ms(100);
 
 		}
+
+	else{
+
+		PORTD &= ~a1;
+
+		PORTD |= a2;
+
+		PORTD &= ~a3;
+
+		PORTD |= a4;
+
+		_delay_ms(100);
+		PORTD &= ~a1;
+
+		PORTD |= a2;
+
+		PORTD |= a3;
+
+		PORTD &= ~a4;
+
+		_delay_ms(100);
+
+		PORTD |= a1;
+
+		PORTD &= ~a2;
+
+		PORTD |= a3;
+
+		PORTD &= ~a4;
+
+		_delay_ms(100);
+
+		PORTD |= a1;
+
+		PORTD &= ~a2;
+
+		PORTD &= ~a3;
+
+		PORTD |= a4;
+
+		_delay_ms(100);
+			}
 
 	}
 
